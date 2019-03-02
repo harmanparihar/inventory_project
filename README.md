@@ -7,7 +7,7 @@ Database: MYSQL
 Live site: https://hardcore-roentgen-81f707.netlify.com/
 
 ## Instructions to run the project:
-Run the front-end using following commands:
+### Run the front-end using following commands:
 
 <code> cd /client/inventory </code>
 
@@ -15,7 +15,7 @@ Run the front-end using following commands:
 
 <code> npm start </code>
 
-Run the backend using following commands:
+### Run the backend using following commands:
 
 <code> cd /server </code>
 
