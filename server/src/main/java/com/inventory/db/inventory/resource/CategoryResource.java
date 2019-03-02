@@ -42,5 +42,9 @@ public class CategoryResource {
 		Set<Product> products = category.allProducts();
 		return new ArrayList<Product>(products);
 	}
+	@GetMapping("/sub/{id}")
+	public List<Category> getSubCategory(@PathVariable("id") long id){
+		return categoryRepository.findSubCategory((int) id);
+	}
 }
 

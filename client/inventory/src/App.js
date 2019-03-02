@@ -12,7 +12,6 @@ class App extends Component {
       products: [],
     }
   }
-  
   componentDidMount(){
     this.getProducts();
     this.getCategories();
@@ -48,6 +47,7 @@ getCategories(){
           console.log(error)
   })
 }
+
 updateProducts(p){
   this.setState({products : p});
 }
@@ -55,7 +55,7 @@ updateProducts(p){
     return (
       <div className="App">
         <Header />
-        <Categories categories={this.state.categories} updateProducts={this.updateProducts.bind(this)} getProducts={this.getProducts.bind(this)} getCategories={this.getCategories.bind(this)}/>
+        <Categories  categories={this.state.categories} updateProducts={this.updateProducts.bind(this)} getProducts={this.getProducts.bind(this)} getCategories={this.getCategories.bind(this)}/>
         <Product products={this.state.products} getProducts={this.getProducts.bind(this)} />
       </div>
     );

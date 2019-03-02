@@ -24,7 +24,7 @@ class Product extends Component {
   render() {
     const mapped_products = this.props.products.map((a) =>{
       return (
-        <div key={a.product_id} className={"ui card "+a.product_id}>
+        <div key={a.product_id} className={"ui card ui_product "+a.product_id}>
           <div className="image dimmable">
             <img src="images/product_icon.png"/>
           </div>
@@ -35,20 +35,20 @@ class Product extends Component {
             </div>
             <div className="description"> Categories : {a.categories.map((c)=>{
               return (
-                <a key={c.category_id} className="meta"> #{c.category_name} </a>
+                <a key={c.category_id} className="meta cat"> {c.category_name} </a>
               )
              })}
              </div>
           </div>
           <div className="ui one bottom attached buttons">
-            <div id={a.product_id} className="ui button" onClick={(e)=>{this.handleClick(e)}}> DELETE </div>
+            <div id={a.product_id} className=" secondary ui button" onClick={(e)=>{this.handleClick(e)}}> DELETE </div>
           </div>
         </div>
       )
     });
     return (
-      <main>
-        <div className="ui four cards">
+      <main className="product_div">
+        <div className="ui cards">
                 {mapped_products}
         </div>
       </main>

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
+import SubCategories from "./SubCategories"
 class Categories extends Component {
   handleClick(e){
     console.log(e.target)
     this.findProducts(e.target.id);
   }
+  
   findProducts(id){
     axios.get(`http://localhost:8080/category/find/${id}`)
       .then(response => {
@@ -19,21 +20,28 @@ class Categories extends Component {
               console.log('find error: ')
               console.log(error)
       });
-      
   }
   render() {
     const mapped_categories = this.props.categories.map((a) =>{
-      return (
-        <div key={a.category_id} className={"ui card "+a.category_id}>
-          <div className="ui button" id={a.category_id} onClick={(e)=>{this.handleClick(e)}}>{a.category_name}</div>
-        </div>
-      )
+      if(!a.parent_category){
+        return (
+          <div key={a.category_id}>
+          <div className={"ui_category "+a.category_id}>
+          
+            <div id={a.category_id} className="" onClick={(e)=>{this.handleClick(e)}}>{a.category_name}</div>
+          </div>
+          <SubCategories updateProducts={this.props.updateProducts} parent_category={a.category_id} />
+          </div>
+        )
+      } else{
+        return null;
+      }
     });
     return (
       <main>
-        <div className="ui four cards">
-                <div  className={"ui card "}>
-                <div className="ui button" onClick={this.props.getProducts}>All</div>
+        <div className="categories_div">
+                <div  className={"ui_category"}>
+                <div onClick={this.props.getProducts}>Categories : All</div>
                 </div>
                 {mapped_categories}
         </div>

@@ -1,4 +1,75 @@
 main{
-    max-width: 800px;
+    max-width: 1000px;
     margin: auto;
+}
+.categories_div{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border-bottom: #eee solid 1px;
+}
+.ui_category, .sub_category{
+    box-sizing: border-box;
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 4px;
+}
+.subcategories_div{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.ui_category:hover,.sub_category:hover{
+    transform: scale(1.1);
+}
+.product_div{
+    margin: 40px auto;
+}
+.delete_button{
+    background-color: #E55600;
+}
+.ui.card, .ui.cards>.card{
+    max-width: 23%;
+    margin:1%;
+}
+
+@media screen and (max-width:700px){
+    .ui.card, .ui.cards>.card{
+        max-width: 29%;
+        margin:2%;
+    }
+}
+@media screen and (max-width:600px){
+    .ui.card, .ui.cards>.card{
+        max-width: 40%;
+        margin:5%;
+    }
+}
+@media screen and (max-width:400px){
+    .ui.card, .ui.cards>.card{
+        max-width: 80%;
+        margin:10%;
+    }
+}
+.ui.cards {
+    /* justify-content: center; */
+}
+.ui.menu,  .secondary.ui.button{
+    background-color:rgb(255, 108, 43);
+    color:white;
+}
+.cat{
+    background-color: #dedede;
+    border-radius: 4px;
+    padding: 5px;
+    margin-right: 5px;
+    line-height: 2rem;
+}
+.logo{
+    font-size: 1.4rem;
+    align-self: center;
+    padding: 20px;
 }
