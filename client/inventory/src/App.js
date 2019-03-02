@@ -18,7 +18,7 @@ class App extends Component {
   }
 
 getProducts(){
-    axios.get(`http://localhost:8080/product/all`)
+    axios.get(`https://java-backend-spring.herokuapp.com/product/all`)
     .then(response => {
         if (!response.data.errmsg) {
           this.setState({products : response.data})
@@ -33,7 +33,7 @@ getProducts(){
     })
 }
 getCategories(){
-  axios.get(`http://localhost:8080/category/all`)
+  axios.get(`https://java-backend-spring.herokuapp.com/category/all`)
   .then(response => {
       if (!response.data.errmsg) {
         this.setState({categories : response.data})

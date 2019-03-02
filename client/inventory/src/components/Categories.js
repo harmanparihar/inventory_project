@@ -8,7 +8,7 @@ class Categories extends Component {
   }
   
   findProducts(id){
-    axios.get(`http://localhost:8080/category/find/${id}`)
+    axios.get(`https://java-backend-spring.herokuapp.com/category/find/${id}`)
       .then(response => {
           if (!response.data.errmsg) {
             console.log('find products successful')
@@ -40,7 +40,7 @@ class Categories extends Component {
     return (
       <main>
         <div className="categories_div">
-                <div  className={"ui_category"}>
+                <div  className={"ui_category all"}>
                 <div onClick={this.props.getProducts}>Categories : All</div>
                 </div>
                 {mapped_categories}

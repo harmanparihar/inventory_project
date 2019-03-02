@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.inventory.db.inventory.model.Product;
 import com.inventory.db.inventory.repository.ProductRepository;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 @RestController
 @RequestMapping(value="/product")
 public class ProductResource {

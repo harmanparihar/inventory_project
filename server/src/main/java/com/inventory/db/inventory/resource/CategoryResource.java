@@ -22,7 +22,7 @@ import com.inventory.db.inventory.model.Product;
 import com.inventory.db.inventory.repository.CategoryRepository;
 import com.inventory.db.inventory.model.Product;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 @RestController
 @RequestMapping(value="/category")
 public class CategoryResource {

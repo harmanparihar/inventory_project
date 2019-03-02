@@ -11,7 +11,7 @@ class SubCategories extends Component {
   }
   
   findProducts(id){
-    axios.get(`http://localhost:8080/category/find/${id}`)
+    axios.get(`https://java-backend-spring.herokuapp.com/category/find/${id}`)
       .then(response => {
           if (!response.data.errmsg) {
             console.log('find products successful')
@@ -25,7 +25,7 @@ class SubCategories extends Component {
       });
   }
   getSubCategories(id){
-    axios.get(`http://localhost:8080/category/sub/${id}`)
+    axios.get(`https://java-backend-spring.herokuapp.com/category/sub/${id}`)
       .then(response => {
           if (!response.data.errmsg) {
             console.log('get sub categories successful')

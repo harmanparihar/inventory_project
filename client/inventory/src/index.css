@@ -3,12 +3,37 @@ main{
     margin: auto;
 }
 .categories_div{
-    display: flex;
+    display: grid;
     width: 100%;
-    justify-content: space-evenly;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    grid-gap: 20px;
     box-sizing: border-box;
     padding: 10px 20px;
     border-bottom: #eee solid 1px;
+}
+.ui_category{
+    background-color: #eee;
+    width:auto;
+}
+.all{
+    height: fit-content
+}
+@media screen and (max-width:400px){
+    .categories_div{
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        grid-gap: 10px;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        border-bottom: #eee solid 1px;
+    }
+    
+    .all{
+        grid-column: 1/-1;
+    }
 }
 .ui_category, .sub_category{
     box-sizing: border-box;

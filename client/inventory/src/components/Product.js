@@ -7,7 +7,7 @@ class Product extends Component {
     this.deleteProduct(e.target.id)
   }
   deleteProduct(id){
-    axios.delete(`http://localhost:8080/product/delete/${id}`)
+    axios.delete(`https://java-backend-spring.herokuapp.com/product/delete/${id}`)
       .then(response => {
           if (!response.data.errmsg) {
             console.log('delete product successful')
