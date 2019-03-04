@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import SubCategories from "./SubCategories"
+import backend_path from './backend'
+
 class Categories extends Component {
-  handleClick(e){
+  handleClick(e,num){ 
     console.log(e.target)
-    this.findProducts(e.target.id);
+    var els = document.querySelectorAll('.active')
+    for (var i = 0; i < els.length; i++) {
+      els[i].classList.remove('active')
+    }
+    e.target.className = "active item";
+    if(num === 1){
+      this.props.getProducts();
+    } else{
+      this.findProducts(e.target.id);
+    }
   }
   
   findProducts(id){
-    axios.get(`https://java-backend-spring.herokuapp.com/category/find/${id}`)
+    axios.get(`${backend_path}/category/find/${id}`)
       .then(response => {
           if (!response.data.errmsg) {
             console.log('find products successful')
@@ -23,28 +34,23 @@ class Categories extends Component {
   }
   render() {
     const mapped_categories = this.props.categories.map((a) =>{
-      if(!a.parent_category){
         return (
-          <div key={a.category_id}>
-          <div className={"ui_category "+a.category_id}>
-          
-            <div id={a.category_id} className="" onClick={(e)=>{this.handleClick(e)}}>{a.category_name}</div>
+          <li className="category_container" key={a.id}>
+          <div className={"ui_category "+a.id}>
+            <div id={a.id} className="item" onClick={(e)=>{this.handleClick(e)}}>{a.name} <i className="dropdown icon"></i></div>
+            <SubCategories categories={a.subcategories} updateProducts={this.props.updateProducts} getProducts={this.props.getProducts} />
           </div>
-          <SubCategories updateProducts={this.props.updateProducts} parent_category={a.category_id} />
-          </div>
+          </li>
         )
-      } else{
-        return null;
-      }
     });
     return (
       <main>
-        <div className="categories_div">
-                <div  className={"ui_category all"}>
-                <div onClick={this.props.getProducts}>Categories : All</div>
-                </div>
+        <ul className="categories_div">
+                <li  className={"ui_category all"}>
+                <div className="item active" onClick={(e)=>{this.handleClick(e,1)}}>Categories : All</div>
+                </li>
                 {mapped_categories}
-        </div>
+        </ul>
       </main>
     );
   }

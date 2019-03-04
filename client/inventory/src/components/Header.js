@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <div className="ui menu">
+        <div className="head_menu">
             <div className="logo">Payfirma</div>
         </div>
     )

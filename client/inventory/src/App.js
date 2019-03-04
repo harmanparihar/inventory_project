@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
 import Header from './components/Header'
 import Product from './components/Product'
 import Categories from './components/Categories'
+import backend_path from './components/backend'
 class App extends Component {
   constructor(){
     super()
@@ -18,7 +18,7 @@ class App extends Component {
   }
 
 getProducts(){
-    axios.get(`https://java-backend-spring.herokuapp.com/product/all`)
+    axios.get(`${backend_path}/product/all`)
     .then(response => {
         if (!response.data.errmsg) {
           this.setState({products : response.data})
@@ -33,7 +33,7 @@ getProducts(){
     })
 }
 getCategories(){
-  axios.get(`https://java-backend-spring.herokuapp.com/category/all`)
+  axios.get(`${backend_path}/category/all`)
   .then(response => {
       if (!response.data.errmsg) {
         this.setState({categories : response.data})

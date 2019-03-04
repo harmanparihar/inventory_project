@@ -1,11 +1,10 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9281450
-    username: sql9281450
-    password: lsUnujB8vB
+    url: jdbc:mysql://java-test.ddns.net:3306/inventory
+    username: harman
+    password: harman
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
-  

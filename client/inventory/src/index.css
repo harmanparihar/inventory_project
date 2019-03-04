@@ -5,12 +5,14 @@ main{
 .categories_div{
     display: grid;
     width: 100%;
+    height: 100px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
     grid-gap: 20px;
     box-sizing: border-box;
     padding: 10px 20px;
     border-bottom: #eee solid 1px;
+
 }
 .ui_category{
     background-color: #eee;
@@ -35,11 +37,18 @@ main{
         grid-column: 1/-1;
     }
 }
+.ui_category{
+    background-color: #dedede;
+    border-radius: 4px;
+}
 .ui_category, .sub_category{
     box-sizing: border-box;
-    padding: 10px;
     cursor: pointer;
     text-align: left;
+    box-sizing: border-box;
+}
+.ui_category div, .sub_category div{
+    padding: 10px;
     border-radius: 4px;
 }
 .subcategories_div{
@@ -47,11 +56,16 @@ main{
     flex-direction: column;
     box-sizing: border-box;
 }
-.ui_category:hover,.sub_category:hover{
-    transform: scale(1.1);
+.item:hover{
+    background-color: #E55600;
+    color:white;
 }
 .product_div{
+    z-index: -1;
     margin: 40px auto;
+}
+.category_container{
+    border-radius: 4px;
 }
 .delete_button{
     background-color: #E55600;
@@ -82,7 +96,7 @@ main{
 .ui.cards {
     /* justify-content: center; */
 }
-.ui.menu,  .secondary.ui.button{
+.head_menu,  .secondary.ui.button{
     background-color:rgb(255, 108, 43);
     color:white;
 }
@@ -98,3 +112,41 @@ main{
     align-self: center;
     padding: 20px;
 }
+ul{
+    padding: 0;
+}
+li{
+    list-style-type: none;
+}
+.active{
+    color: #E55600;
+}
+.active:hover{
+    color: white;
+    background-color: #E55600;
+}
+ul .sub_category{
+    background-color: #eee;
+    z-index: 1;
+}
+li.category_container:hover ul .sub_category {
+    display: block;
+}
+.item{
+    display: flex;
+    justify-content: space-between;
+}
+ul ul .sub_category{
+    display: none;
+}
+.sub_2{
+    display: none;
+}
+.sub_category:hover .sub_2{
+    display: block;
+}
+/* .sub_2 ul{
+    position: relative;
+    right: -166px;
+    bottom:50px;
+} */

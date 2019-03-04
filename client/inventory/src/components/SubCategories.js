@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
+import backend_path from './backend'
 class SubCategories extends Component {
   state={
     sub_categories:[],
@@ -11,7 +11,7 @@ class SubCategories extends Component {
   }
   
   findProducts(id){
-    axios.get(`https://java-backend-spring.herokuapp.com/category/find/${id}`)
+    axios.get(`${backend_path}/category/find/${id}`)
       .then(response => {
           if (!response.data.errmsg) {
             console.log('find products successful')
@@ -24,36 +24,32 @@ class SubCategories extends Component {
               console.log(error)
       });
   }
-  getSubCategories(id){
-    axios.get(`https://java-backend-spring.herokuapp.com/category/sub/${id}`)
-      .then(response => {
-          if (!response.data.errmsg) {
-            console.log('get sub categories successful')
-            this.setState({sub_categories: response.data});
-          } else {
-            console.log('get sub categories failed')
-          }
-      }).catch(error => {
-              console.log('get sub categories error: ')
-              console.log(error)
-      });
-  }
-  componentDidMount(){
-    this.getSubCategories(this.props.parent_category);
-  }
+
   render() {
-    const mapped_categories = this.state.sub_categories.map((a) =>{
-        return (
-          <div key={a.category_id} className={"sub_category "+a.category_id}>
-            <div id={a.category_id} className="" onClick={(e)=>{this.handleClick(e)}}>{a.category_name}</div>
-          </div>
-        )
+    const mapped_categories = this.props.categories.map((a) =>{
+        if(!a.subcategories || a.subcategories.length<1){
+          return (
+            <li key={a.id} className={"sub_category "+a.category_id}>
+              <div id={a.id} className="item" onClick={(e)=>{this.handleClick(e)}}>{a.name}</div>
+            </li>
+          )
+        } else{
+          return (
+          <li key={a.id} className={"sub_category "+a.category_id}>
+              <div id={a.id} className="item" onClick={(e)=>{this.handleClick(e)}}>{a.name} <i className="dropdown icon"></i></div>
+                <div className="sub_2">
+                <SubCategories categories={a.subcategories} updateProducts={this.props.updateProducts} getProducts={this.props.getProducts} />
+                </div>
+            </li>
+          )
+        }
+        
     });
     return (
       <main>
-        <div className="subcategories_div">
+        <ul className="subcategories_div">
                 {mapped_categories}
-        </div>
+        </ul>
       </main>
     );
   }
