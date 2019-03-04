@@ -12,7 +12,6 @@ main{
     box-sizing: border-box;
     padding: 10px 20px;
     border-bottom: #eee solid 1px;
-
 }
 .ui_category{
     background-color: #eee;
@@ -31,6 +30,7 @@ main{
         box-sizing: border-box;
         padding: 10px 20px;
         border-bottom: #eee solid 1px;
+        height: auto;
     }
     
     .all{
