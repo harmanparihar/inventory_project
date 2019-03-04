@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import backend_path from './backend'
 
 class Product extends Component {
   handleClick(e){
@@ -7,7 +8,7 @@ class Product extends Component {
     this.deleteProduct(e.target.id)
   }
   deleteProduct(id){
-    axios.delete(`https://java-backend-spring.herokuapp.com/product/delete/${id}`)
+    axios.delete(`${backend_path}/product/delete/${id}`)
       .then(response => {
           if (!response.data.errmsg) {
             console.log('delete product successful')
