@@ -4,7 +4,6 @@ Backend : Spring Boot
 Front-end : ReactJS
 Database: MYSQL
 
-Live site: https://hardcore-roentgen-81f707.netlify.com/
 
 ## Instructions to run the project:
 ### Run the front-end using following commands:
